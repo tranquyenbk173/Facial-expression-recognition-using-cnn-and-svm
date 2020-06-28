@@ -1,4 +1,4 @@
-# Nhận dạng cảm xúc khuôn mặt sử dụng phương pháp SVM v
+# Nhận dạng cảm xúc khuôn mặt sử dụng phương pháp SVM & CNN
 Hôm nay mình sẽ giới thiệu cho các bạn về chủ đề nhận dạng cảm xúc qua khuôn mặt, sử dụng 2 phương pháp chính là SVM và CNN.
 Mục tiêu của bài viết:
 + So sánh phương pháp SVM và CNN trong nhận dạng cảm xúc qua khuôn mặt.
