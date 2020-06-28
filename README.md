@@ -1,8 +1,8 @@
-# Chào các bạn,
-# Hôm nay mình sẽ giới thiệu cho các bạn về chủ đề nhận dạng cảm xúc qua khuôn mặt, sử dụng 2 phương pháp chính là SVM và CNN.
-# Mục tiêu của bài viết:
-##  + So sánh phương pháp SVM và CNN trong nhận dạng cảm xúc qua khuôn mặt.
-##  + So sánh phương pháp CNN cơ bản và CNN cơ bản kết hợp các đặc trưng truyền thống.
+# Nhận dạng cảm xúc khuôn mặt sử dụng phương pháp SVM v
+** Hôm nay mình sẽ giới thiệu cho các bạn về chủ đề nhận dạng cảm xúc qua khuôn mặt, sử dụng 2 phương pháp chính là SVM và CNN.
+** Mục tiêu của bài viết:
+**  + So sánh phương pháp SVM và CNN trong nhận dạng cảm xúc qua khuôn mặt.
+**  + So sánh phương pháp CNN cơ bản và CNN cơ bản kết hợp các đặc trưng truyền thống.
 
 Để làm rõ 2 mục tiêu trên, mình sẽ giới thiệu mô hình kiến trúc mình triển khai (Mô hình này mình đã tìm hiểu và tham khảo bài báo: [[Facial Expression Recognition using Convolutional Neural Networks: State of the Art, Pramerdorfer & al. 2016]](https://arxiv.org/abs/1612.02903) - Đây là bài báo uy tin, được đăng lên tạp chí nổi tiếng và tới thời điểm hiện tại có 71 bài báo khác tham chiếu + tham khảo đến nó)
 
@@ -18,7 +18,7 @@ Mô hình CNN cơ bản thiết kế cho hệ thống nhận dạng cảm xúc q
 Sau khi thực hiện triển khai mô hình, và thực hiện cài đặt, ta được kết quả dưới đây :
 ![Model's architecture](ketqua_fer.png)
 
-# -> Nhìn vào bảng kết qủa ta đã chứng tỏ được kết quả mục tiêu thực hiện.
+** -> Nhìn vào bảng kết qủa ta đã chứng tỏ được kết quả mục tiêu thực hiện.
 
 
 ## <a name="install">4.1. Install dependencies</a>
