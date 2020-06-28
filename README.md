@@ -84,3 +84,15 @@ Cuối cùng Predict tâm trạng
 ```
 python predict.py --image path/to/image.jpg
 ```
+-Tương tự cho SVM, chú ý đến tên file.
+
+Cuối cùng sau khi training xong hết, thì ta chạy lần lượt các file: main.py, main_image.py, main_video.py
+Kịch bản kiểm thử:
+1 Thử nghiệm trên bộ dataset FER 2013
+![Model's architecture](kq1.png)
+2 Thử nghiệm trên 1 ảnh bất kỳ trong bộ dataset FER2013
+![Model's architecture](kq2.png)
+3. Thử nghiệm trực tiếp qua camera
+Các bạn cứ chạy nhá, do m
+
+
