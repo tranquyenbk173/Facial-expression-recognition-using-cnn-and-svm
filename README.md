@@ -90,9 +90,12 @@ Cuối cùng sau khi training xong hết, thì ta chạy lần lượt các file
 Kịch bản kiểm thử:
 1 Thử nghiệm trên bộ dataset FER 2013
 ![Model's architecture](kq1.png)
+
 2 Thử nghiệm trên 1 ảnh bất kỳ trong bộ dataset FER2013
 ![Model's architecture](kq2.png)
+
 3. Thử nghiệm trực tiếp qua camera
-Các bạn cứ chạy nhá, do m
+Các bạn cứ chạy nhá, do mình chưa kịp đưa lên,
+
 
 
