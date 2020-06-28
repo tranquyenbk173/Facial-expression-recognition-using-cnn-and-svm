@@ -97,5 +97,4 @@ Kịch bản kiểm thử:
 3. Thử nghiệm trực tiếp qua camera
 Các bạn cứ chạy nhá, do mình chưa kịp đưa lên,
 
-
-
+** Mong các bạn có những đóng góp để mình chỉnh sửa và hoàn thiện hơn.
