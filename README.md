@@ -1,78 +1,25 @@
-Chào các bạn,
-Hôm nay mình sẽ giới thiệu cho các bạn về chủ đề nhận dạng cảm xúc qua khuôn mặt, sử dụng 2 phương pháp chính là SVM và CNN.
-Mục tiêu của bài viết:
-+ So sánh phương pháp SVM và CNN trong nhận dạng cảm xúc qua khuôn mặt.
-+ So sánh phương pháp CNN cơ bản và CNN cơ bản kết hợp các đặc trưng truyền thống.
+# Chào các bạn,
+# Hôm nay mình sẽ giới thiệu cho các bạn về chủ đề nhận dạng cảm xúc qua khuôn mặt, sử dụng 2 phương pháp chính là SVM và CNN.
+# Mục tiêu của bài viết:
+##  + So sánh phương pháp SVM và CNN trong nhận dạng cảm xúc qua khuôn mặt.
+##  + So sánh phương pháp CNN cơ bản và CNN cơ bản kết hợp các đặc trưng truyền thống.
 
-Để làm rõ 2 mục tiêu trên, mình sẽ giới thiệu mô hình kiến trúc mình triển khai (Mô hình này mình đã tìm hiểu và tham khảo bài báo:[Facial Expression Recognition using Convolutional Neural Networks: State of the Art, Pramerdorfer & al. 2016] - Đây là bài báo uy tin, được đăng lên tạp chí nổi tiếng và tới thời điểm hiện tại có 71 bài báo khác tham chiếu + tham khảo đến nó)
+Để làm rõ 2 mục tiêu trên, mình sẽ giới thiệu mô hình kiến trúc mình triển khai (Mô hình này mình đã tìm hiểu và tham khảo bài báo: [[Facial Expression Recognition using Convolutional Neural Networks: State of the Art, Pramerdorfer & al. 2016]](https://arxiv.org/abs/1612.02903) - Đây là bài báo uy tin, được đăng lên tạp chí nổi tiếng và tới thời điểm hiện tại có 71 bài báo khác tham chiếu + tham khảo đến nó)
 
-Dưới đây là mô hình CNN kết hợp đặc trưng truyền thống cho hệ thống nhận dạng cảm xúc qua khuôn mặt
-https://github.com/ducmanhkthd/Facial-expression-recognition-using-cnn-and-svm/blob/master/CNN_models_architecture.png
+Mô hình CNN kết hợp đặc trưng truyền thống cho hệ thống nhận dạng cảm xúc qua khuôn mặt
 ![Model's architecture](CNN_models_architecture.png)
-Đầu vào: hình ảnh có kích thước là 48x48 pixel, 
-Đầu ra: trạng thái cảm xúc của khuôn mặt.
-Mô hình hoạt đông :
 
+Mô hình SVM thiết kế cho hệ thống nhận dạng cảm xúc qua khuôn mặt
+![Model's architecture](svm.png)
 
-# <a name="motivation">1. Motivation</a>
+Mô hình CNN cơ bản thiết kế cho hệ thống nhận dạng cảm xúc qua khuôn măt
+![Model's architecture](cnn_coban.png)
 
-The goal is to get a quick baseline to compare if the CNN architecture performs better when it uses only the raw pixels of images for training, or if it's better to feed some extra information to the CNN (such as face landmarks or HOG features). The results show that the extra information helps the CNN to perform better.
+Sau khi thực hiện triển khai mô hình, và thực hiện cài đặt, ta được kết quả dưới đây :
+![Model's architecture](ketqua_fer.png)
 
-To train the model, we used Fer2013 datset that contains 30,000 images of facial expressions grouped in seven categories: Angry, Disgust, Fear, Happy, Sad, Surprise and Neutral.
+# -> Nhìn vào bảng kết qủa ta đã chứng tỏ được kết quả mục tiêu thực hiện.
 
-The faces are first detected using opencv, then we extract the face landmarks using dlib. We also extracted the HOG features and we input the raw image data with the face landmarks+hog into a convolutional neural network.
-
-For our experiments, we used 2 CNN models:
-
-![Model's architecture](img/CNN_models_architecture.png)
-
-
-# <a name="fer2013">2. Why is Fer2013 challenging?</a>
-
-Fer2013 is a challenging dataset. The images are not aligned and some of them are uncorrectly labeled as we can see from the following images. Moreover, some samples do not contain faces. 
-
-![Fer2013 incorrect labeled images](img/fer2013_incorrect_labels.png)
-
-![Fer2013 strange samples](img/FER2013_strange_samples.png)
-
-This makes the classification harder because the model have to generalize well and be robust to incorrect data. The best accuracy results obtained on this dataset, as far as I know, is 75.2% described in this paper: 
-[[Facial Expression Recognition using Convolutional Neural Networks: State of the Art, Pramerdorfer & al. 2016]](https://arxiv.org/abs/1612.02903)
-
-
-# <a name="results">3. Classification Results (training on 5 expressions)</a>
-
-|       Experiments                            |    SVM    | Model A  |  Model B  |  Difference |
-|----------------------------------------------|-----------|----------|-----------|-------------|
-| CNN (on raw pixels)                          |   -----   |   72.4%  |   73.5%   |    +1.1%    |
-| CNN + Face landmarks                         |   46.9%   |   **73.5%**  |   74.4%   |    +0.9%    |
-| CNN + Face landmarks + HOG                   |   55.0%   |   68.7%  |   73.2%   |    +4.5%    |
-| CNN + Face landmarks + HOG + sliding window  |   **59.4%**   |   71.4%  |   **75.1%**   |    +3.7%    |  
-
-As expected:
-- The CNN models gives better results than the SVM (You can find the code for the SVM implmentation in the following repository: [Facial Expressions Recognition using SVM](https://github.com/amineHorseman/facial-expression-recognition-svm))
-- Combining more features such as Face Landmarks and HOG, improves *slightly* the accuray.
-- Since the CNN Model B uses deep convolutions, it gives better results on all experiments (up to 4.5%).
-
-It's interesting to note that using HOG features in the CNN Model A decreased the results compared to using only the RAW data. This may be caused by an overfitting or a failure to extract the coorelation between the information.
-
-In the following table, we can see the effects of the batch normalization on improving the results:
-
-|   Batch norm effects                         |  on Model A  |  on Model B  |
-|----------------------------------------------|--------------|--------------|
-| CNN (on raw pixels)                          |     +7.4%    |    +39.3%    |
-| CNN + Face landmarks                         |    +26.2%    |    +50.0%    |
-| CNN + Face landmarks + HOG                   |     +1.9%    |    +50.1%    |
-| CNN + Face landmarks + HOG + sliding window  |    +16.7%    |    +16.9%    |
-
-In the previous experiments, I used only 5 expressions for the training: Angry, Happy, Sad, Surprise and Neutral.
-
-The accuracy using the best model trained on the whole dataset (7 emotions) dropped to 61.4%. 
-The state of the art results obtained on this dataset, as far as I know, is 75.2% described in [this paper](https://arxiv.org/abs/1612.02903).
-
-
-Note: the code was tested in python 2.7 and 3.6.
-
-# <a name="how-to-use">4. HOW TO USE?</a>
 
 ## <a name="install">4.1. Install dependencies</a>
 
